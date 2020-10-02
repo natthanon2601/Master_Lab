@@ -1,26 +1,26 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, FlatList, TouchableHighlight,StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const availableZipItems = [
-    <Text > Welcome to coc </Text>
+    { place: 'Hatyai', code: '90110' },
+    { place: 'Phuket', code: '92130' },
+    { place: 'Trang', code: '92000' },
+    { place: 'Chiangmai', code: '50000' },
+    { place: 'Khonkaen', code: '40000' },
+    { place: 'Chonburi', code: '20000' },
 ]
 
 const ZipItem = ({ place, code, navigation }) => (
-    <TouchableHighlight onPress={() => navigation.navigate('Welcome', { zipCode: code })}>
-        <View style={styles.center}>
-        <Text style={styles.space}>Welcome to coc</Text> 
-        <View style={{ borderColor: 'black', borderWidth: 5 }}>
-        <Text style={styles.small}> Sec 2</Text>
-        </View>
+    <TouchableHighlight onPress={() => navigation.navigate('Weather', { zipCode: code })}>
+        <View style={{ borderColor: 'black', borderWidth: 1 }}>
             <Text>{place}</Text>
             <Text>{code}</Text>
         </View>
     </TouchableHighlight>
-    
 )
- 
+
 const _keyExtractor = item => item.code
 
 export default function ZipCodeScreen() {
@@ -37,33 +37,3 @@ export default function ZipCodeScreen() {
         </View>
     );
 }
-const styles = StyleSheet.create({
-    center: {     
-        justifyContent: 'space-around',   
-        alignItems: 'center',
-    },
-    big: {
-        margin : 10,
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: 'white',
-    },
-    medium: {
-        margin : 10,
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: 'black',
-    },
-    small:
-    {
-        color: 'black',
-        fontSize: 30,
-    },
-    space:
-    {
-        color: 'black',
-        fontSize: 30,
-        margin: 30,
-    }
-    
-})

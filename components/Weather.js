@@ -17,6 +17,7 @@ export default function Weather(props) {
         if (props.zipCode) {
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${props.zipCode},th&units=metric&APPID=${apiKey}`)
                 .then((response) => response.json())
+
                 .then((json) => {
                     console.log('json: ', json.weather)
                     // console.log(json.weather[0].main)
@@ -35,8 +36,9 @@ export default function Weather(props) {
 
     return (
         <View>
-            <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+            <ImageBackground source={require('../bg.png')} style={styles.backdrop}>
                 <View style={styles.cover}>
+                    <Text style={styles.medium}>Zip Code:  {props.zipCode}</Text>
                     <Forecast {...forecastInfo} />
                 </View>
             </ImageBackground>
